@@ -15,6 +15,11 @@ public protocol AVFResponseNetworkCallable: AVFNetworkCallable, AVFDataResponseC
 class AVFResponseNetworkCaller<Configuration: AVFDataResponseConfigurable & AVFURLRequestProvider>: AVFResponseNetworkCallable, AVFSessionable {
     
     // add init with api key ?
+    init(session: URLSession? = nil) {
+        if let session = session {
+            self.session = session
+        }
+    }
     
     typealias DataConfig = Configuration
     lazy var session: URLSession = URLSession.shared

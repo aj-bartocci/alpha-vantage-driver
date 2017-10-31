@@ -86,7 +86,7 @@ public protocol AVFNonIntervalSeriesConfigurable {
     associatedtype APIKey = AVFSeries.Symbol
 }
 
-public struct AVFNonIntervalSeriesConfig<Model: AVFObjectInitializable>: AVFNonIntervalSeriesConfigurable {
+public struct AVFNonIntervalSeriesConfig<Model: AVFObjectInitializable> {
     
     public typealias OutputSize = AVFSeries.OutputSize
     public typealias DataType = AVFSeries.DataType

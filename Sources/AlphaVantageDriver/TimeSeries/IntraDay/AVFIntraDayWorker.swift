@@ -12,12 +12,12 @@ public class AVFIntraDayWorker {
     public typealias IntraDay = AVFIntraDayConfig
     public typealias Response = IntraDay.ResponseType
     
+    private let worker: AVFResponseNetworkCaller<IntraDay>
     private let apiKey: String
-    public init(apiKey: String) {
+    public init(apiKey: String, session: URLSession? = nil) {
         self.apiKey = apiKey
+        self.worker = AVFResponseNetworkCaller<IntraDay>(session: session)
     }
-    
-    private let worker = AVFResponseNetworkCaller<IntraDay>()
     
     public func get(symbol: String, interval: IntraDay.Interval, size: IntraDay.OutputSize = .compact, completion: @escaping (Error?, Response?) -> ()) {
         let config = IntraDay.intraday(symbol: .value(symbol), interval: interval, type: .json, size: size, apiKey: .key(apiKey))
